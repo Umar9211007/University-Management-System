@@ -33,5 +33,14 @@ app.listen(process.env.PORT, () => {
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://polite-lily-ec74ab.netlify.app'
+  origin: 'https://universitymanagementsystem1.netlify.app'
 }));
+
+// In your server (index.js or server.js)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+  });
+}
