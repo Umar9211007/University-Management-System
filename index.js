@@ -7,7 +7,7 @@ const app = express();
 const Routes = require("./routes/route.js");
 const path = require('path');
 
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 
 // const cors = require('cors');
 
@@ -37,11 +37,34 @@ app.use(cors({
   origin: 'https://universitymanagementsystem1.netlify.app'
 }));
 
-// In your server (index.js or server.js)
+// // In your server (index.js or server.js)
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../frontend/build')));
+  
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+//   });
+// }
+
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
-  
+
   app.get('*', (req, res) => {
+    console.log('Serving index from:', path.resolve(__dirname, '../frontend/build', 'index.html')); // <-- Add this
     res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
   });
+}
+
+// Listen on a port
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(...));
+  app.get('*', ...);
 }
