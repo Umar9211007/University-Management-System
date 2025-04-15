@@ -8,6 +8,8 @@ const Routes = require("./routes/route.js");
 
 const PORT = process.env.PORT || 5000;
 
+const cors = require('cors');
+
 dotenv.config();
 
 // app.use(bodyParser.json({ limit: '10mb', extended: true }))
@@ -26,3 +28,10 @@ app.use("/", Routes);
 app.listen(process.env.PORT, () => {
   console.log(`Server started at port no. ${process.env.PORT}`);
 });
+
+
+app.use(cors());
+
+app.use(cors({
+  origin: 'https://polite-lily-ec74ab.netlify.app'
+}));
