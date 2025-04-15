@@ -7,7 +7,7 @@ const app = express();
 const Routes = require("./routes/route.js");
 const path = require('path');
 
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 // const cors = require('cors');
 
@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Listen on a port
-const PORT = process.env.PORT || 5000;
+// const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
