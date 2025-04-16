@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("cors");
+const cors = require('cors');
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 // const bodyParser = require("body-parser")
@@ -8,8 +8,6 @@ const Routes = require("./routes/route.js");
 const path = require('path');
 
 const PORT = process.env.PORT || 5000;
-
-// const cors = require('cors');
 
 dotenv.config();
 
@@ -30,12 +28,6 @@ app.listen(process.env.PORT, () => {
   console.log(`Server started at port no. ${process.env.PORT}`);
 });
 
-
-app.use(cors());
-
-app.use(cors({
-  origin: 'https://universitymanagementsystem1.netlify.app'
-}));
 
 // // In your server (index.js or server.js)
 // if (process.env.NODE_ENV === 'production') {
@@ -63,7 +55,6 @@ app.listen(PORT, () => {
 });
 
 
-const cors = require('cors');
 
 app.use(cors({
   origin: 'https://universitymanagementsystem1.netlify.app',
