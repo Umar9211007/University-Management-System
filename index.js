@@ -61,3 +61,11 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://universitymanagementsystem1.netlify.app',
+  credentials: true
+}));
